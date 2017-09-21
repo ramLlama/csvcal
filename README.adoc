@@ -1,0 +1,14 @@
+== csvcal
+
+Collection of programs to convert CSV calendars.
+
+== csv2ical
+
+Converts a CSV calendar from an HTTP resource with the format
+
+"Date",Time0,Time1,Time2,...
+Date0,,reserver,reserver,...
+Date1,reserver,,,...
+
+into a valid ICal calendar. These kinds of calendars are easy to make
+and manage in a Google Sheet, and is the motivating example.
