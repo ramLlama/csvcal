@@ -5,13 +5,12 @@ use 5.010;
 use warnings;
 use strict;
 
-use Data::Dumper;
-
 use Data::ICal;
 use Data::ICal::Entry::Event;
 use Date::ICal;
 use Date::Manip;
 use LWP::Simple;
+use Pod::Usage;
 use Text::CSV;
 
 #############
@@ -54,7 +53,11 @@ sub process_reservation {
 ########
 # Main #
 ########
-
+# Parse Options
+if (scalar(@ARGV) != 2) {
+  pod2usage(-verbose => 1, -exitval => 1);
+  exit 255;
+}
 my $uri = $ARGV[0];
 my $offset = $ARGV[1];
 
@@ -126,3 +129,22 @@ for my $i (0 .. $#rows) {
 }
 
 print ($calendar->as_string());
+
+######
+# POD #
+#######
+=head1 NAME
+
+csv2ical.pl: Convert simple CSV calendars to ICal format.
+
+=head1 SYNOPSIS
+
+csv2ical.pl URL TZOFFSET
+
+=head1 ARGUMENTS
+
+URL The url to the CSV file to convert. See README for format information.
+
+TZOFFSET The Timezone offset of the CSV file (e.g. '-0500' for EST).
+
+=cut
