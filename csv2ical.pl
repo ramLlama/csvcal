@@ -16,7 +16,6 @@ use Text::CSV;
 #############
 # Constants #
 #############
-my $SHEETSAPI_HOST = "https://sheets.googleapis.com";
 my $EMPTY_RES_SLOT = '';
 
 ###############
@@ -107,9 +106,8 @@ for my $i (0 .. $#rows) {
 			      $col2time{$j},
 			      $offset);
 
-	  my $res_owner = undef;
-	  my $res_starttime = undef;
-	  my $res_endtime = undef;
+	  $res_owner = undef;
+	  $res_starttime = undef;
 	}
       }
 
